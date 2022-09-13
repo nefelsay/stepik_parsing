@@ -26,8 +26,8 @@ class Parser:
                 soup = BeautifulSoup(response.text, 'lxml')
                 ip = soup.find('tbody').find_all('tr')
                 port = soup.find('tbody').find_all('tr')
-                # if ip.find_all('td')[0].text == 'SOCKS5':
-                type_proxy = ['SOCKS4', 'SOCKS5']
+                
+                type_proxy = ['SOCKS4', 'SOCKS5'] # что парсить HTTP или HTTPS добавьте их в этот список
                 for ip, port in zip(ip, port):
                     if ip.find_all('td')[4].text in type_proxy:
                         self.completed_proxy_list.append(
