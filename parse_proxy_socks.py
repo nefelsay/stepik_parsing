@@ -38,7 +38,7 @@ class Parser:
             print(_ex)
 
     def save_proxy_in_txt(self):    # записывает результат в файл
-        with open('proxy_list_SOCKS5.txt', 'w') as file:
+        with open('proxy_list_SOCKS.txt', 'w') as file:
             for proxy in self.completed_proxy_list:
                 file.write(proxy)
 
