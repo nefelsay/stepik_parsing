@@ -24,28 +24,23 @@ class Parser:
                         browser.execute_script("window.scrollBy(0,1000)")
                         WebDriverWait(browser, 10).until(EC.element_to_be_clickable(a)).click()
                         print(f'Страница {x} обработана')
+                        for link in self.source_page:
+                            soup = BeautifulSoup(link, 'lxml')
+                            ips = soup.find('table').find_all('tr')
+                            port = soup.find('tbody').find_all('tr')
+                            for ip, port in zip(ips, port):
+                                g = f"{ip.find_all('td')[0].text}:{port.find_all('td')[1].text}\n"
+                                print('Прокси сохранён в файл',g,end='')
+                                file = open('proxy_list.txt', 'a')
+                                file.write(g)
+                            file.close()
                     except Exception:
                         continue
 
-    def get_html(self):
-        for link in self.source_page:
-            soup = BeautifulSoup(link, 'lxml')
-            ips = soup.find('table').find_all('tr')
-            port = soup.find('tbody').find_all('tr')
-            for ip, port in zip(ips, port):
-                self.completed_proxy_list.append(
-                    f"{ip.find_all('td')[0].text}:{port.find_all('td')[1].text} \n")
-
-
-    def save_proxy_in_txt(self):
-        with open('proxy_list.txt', 'w') as file:
-            for proxy in self.completed_proxy_list:
-                file.write(proxy)
 
     def main(self):
         self.open_chrome()
-        parse.get_html()
-        self.save_proxy_in_txt()
+
 
 
 if __name__ == '__main__':
