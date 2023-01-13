@@ -39,6 +39,8 @@ class Parser:
 
     def main(self):
         self.open_chrome()
+        
+        
 if __name__ == '__main__':
     parse = Parser()
     parse.main()
