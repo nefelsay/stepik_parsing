@@ -28,7 +28,6 @@ class Parser:
                         ips = soup.find('table').find('tbody').find_all('tr')
                         port = soup.find('table').find('tbody').find_all('tr')
                         for ip, port in zip(ips, port):
-                            # print(ip,port)
                             g = f"{ip.find_all('td')[0].text}:{port.find_all('td')[1].text}\n"
                             print('Прокси сохранён в файл', g, end='')
                             file = open('proxy_list.txt', 'a')
