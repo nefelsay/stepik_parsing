@@ -11,7 +11,8 @@ class Parser:
         self.source_page = []
 
     def open_chrome(self):
-        with uc.Chrome(version_main=108) as browser:
+        # УКАЖИТЕ АКТУАЛЬНУЮ ВЕРСИЮ БРАУЗЕРА version_main=108
+         with uc.Chrome(version_main=114,service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())) as browser:
             browser.get('https://hidemy.name/ru/proxy-list/#list')
             browser.implicitly_wait(10)
             el = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.TAG_NAME, "tbody")))
