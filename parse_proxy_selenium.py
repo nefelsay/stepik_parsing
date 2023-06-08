@@ -17,7 +17,8 @@ class Parser:
         self.source_page = []
 
     def open_chrome(self):
-        # УКАЖИТЕ АКТУАЛЬНУЮ ВЕРСИЮ БРАУЗЕРА version_main=108
+        # УКАЖИТЕ АКТУАЛЬНУЮ ВЕРСИЮ БРАУЗЕРА version_main=108 
+        # chrome://version/  - в адресной строке браузера
          with uc.Chrome(version_main=114,service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())) as browser:
             browser.get('https://hidemy.name/ru/proxy-list/#list')
             browser.implicitly_wait(10)
