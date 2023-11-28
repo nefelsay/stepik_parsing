@@ -76,7 +76,7 @@ async def get_data(session, link):
     Так же в этом функции происходит переиспользование сессии для более глубокого прохода по сайту,
     это помогает извлекать информацию непосредственно из каждой карточки.
 
-    output: извлекаемые данные с помощью BeautifulSoup
+    Output: извлекаемые данные с помощью BeautifulSoup
     '''
     async with session.get(url=link) as response:
         resp = await response.text()
